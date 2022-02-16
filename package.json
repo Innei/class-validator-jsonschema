@@ -1,6 +1,6 @@
 {
   "name": "@innei/class-validator-jsonschema",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Convert class-validator-decorated classes into JSON schema",
   "keywords": [
     "class-validator",
@@ -13,6 +13,14 @@
   "repository": "git@github.com:epiphone/class-validator-jsonschema.git",
   "author": "Aleksi Pekkala <aleksipekkala@gmail.com>",
   "license": "MIT",
+  "bump": {
+    "before": [
+      "npm run build"
+    ],
+    "after": [
+      "npm publish --access public"
+    ]
+  },
   "scripts": {
     "clean": "rimraf coverage build",
     "build": "npm run clean && tsc -p tsconfig.release.json",
