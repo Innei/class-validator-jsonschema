@@ -55,4 +55,34 @@ describe('Exclude() decorator', () => {
       },
     })
   })
+
+  it('do not omits Exclude()-decorated properties from output schema', () => {
+    const schema = validationMetadatasToSchemas({
+      classTransformerMetadataStorage: defaultMetadataStorage,
+      doNotExcludeDecorator: true,
+    })
+
+    expect(schema).toEqual({
+      Parent: {
+        properties: {
+          inherited: {},
+          inheritedInternal: {},
+          excludedInUser: {},
+        },
+        type: 'object',
+        required: ['inherited', 'inheritedInternal', 'excludedInUser'],
+      },
+      User: {
+        properties: {
+          id: { type: 'string' },
+          excludedInUser: {},
+          inherited: {},
+          inheritedInternal: {},
+          internal: {},
+        },
+        type: 'object',
+        required: ['id', 'internal', 'inherited', 'inheritedInternal'],
+      },
+    })
+  })
 })
