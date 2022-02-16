@@ -13,6 +13,14 @@
   "repository": "git@github.com:epiphone/class-validator-jsonschema.git",
   "author": "Aleksi Pekkala <aleksipekkala@gmail.com>",
   "license": "MIT",
+  "bump": {
+    "before": [
+      "npm run build"
+    ],
+    "after": [
+      "npm publish --access public"
+    ]
+  },
   "scripts": {
     "clean": "rimraf coverage build",
     "build": "npm run clean && tsc -p tsconfig.release.json",
